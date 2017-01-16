@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="nula">#0099ff</color>
+    <color name="cierna">#000000</color>
+    <color name="biela">#ffffff</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="modra">#0099ff</color>
+    <color name="cervena">#FF0000</color>
+    <color name="Green">#00FF00</color>
+    <color name="Siva">#383838 </color>
+
+</resources>

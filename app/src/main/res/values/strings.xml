@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SmartBus</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_register">Register</string>
+    <string name="verify">Verify</string>
+    <string name="reload">Reload</string>
+    <string name="show_error">Failed to show CAPTCHA</string>
+    <string name="verification_success">Registration successful</string>
+    <string name="verification_failed">You did not enter the CAPTCHA phrase correctly</string>
+    <string name="instruction">Enter the words above</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_user_setup">UserSetup</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_reservation">Reservation</string>
+    <string name="title_activity_history">History</string>
+    <string name="title_activity_rate">Rate</string>
+    <string name="title_activity_star">Star</string>
+    <string name="title_activity_volba_jazdy">VolbaJazdy</string>
+    <string name="title_activity_rezervacia_cas">Rezervacia_cas</string>
+    <string name="title_activity_listok">Listok</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="capps">capps</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_sedadla64">Sedadla64</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home_driver">Home_driver</string>
+    <string name="title_activity_MainActivity">MainActivity</string>
+    <string name="title_activity_rides_driver">Rides_driver</string>
+    <string name="title_activity_listky_driver">Listky_driver</string>
+    <string name="title_activity_buy_driver">Buy_driver</string>
+    <string name="title_activity_vyber_mesta_driver">VyberMestaDriver</string>
+    <string name="title_activity_sedadla64_driver">Sedadla64_driver</string>
+    <string name="title_activity_uvod">Uvod</string>
+
+</resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.capps.smartbus"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <activity
+            android:name=".Uvod"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="@string/app_name"
+    android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".UserSetup"
+            android:label="@string/title_activity_user_setup"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Reservation"
+            android:label="@string/title_activity_reservation"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".History"
+            android:label="@string/title_activity_history"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Star"
+            android:label="@string/title_activity_star"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".VolbaJazdy"
+            android:label="@string/title_activity_volba_jazdy"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Rezervacia_cas"
+            android:label="@string/title_activity_rezervacia_cas"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Listok"
+            android:label="@string/title_activity_listok"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Sedadla64"
+            android:label="@string/title_activity_sedadla64"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Home_driver"
+            android:label="@string/title_activity_home_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Rides_driver"
+            android:label="@string/title_activity_rides_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Listky_driver"
+            android:label="@string/title_activity_listky_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Buy_driver"
+            android:label="@string/title_activity_buy_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".VyberMestaDriver"
+            android:label="@string/title_activity_vyber_mesta_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Sedadla64_driver"
+            android:label="@string/title_activity_sedadla64_driver"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="MainActivity"
+            android:label="@string/title_activity_MainActivity"
+            android:configChanges="orientation"
+    android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>
