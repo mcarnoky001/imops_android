@@ -19,7 +19,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.capps.smartbus.UserSetup;
+import com.capps.imops.UserSetup;
 
 public class GetInfo extends AsyncTask<String, Integer, Boolean> {
 

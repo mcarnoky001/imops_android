@@ -1,158 +1,125 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cierna"
+    android:background="@color/biela"
     tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text="Logout"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Siva"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignEnd="@+id/imageButton8"
+        android:layout_marginEnd="23dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/biela"
+        android:onClick="user_setup"
+        android:scaleType="fitCenter"
+        android:src="@drawable/user"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/imageButton4" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         style="@color/cierna"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_alignRight="@+id/imageButton8"
-        android:background="@color/cierna"
+        android:background="@color/biela"
         android:onClick="history"
         android:scaleType="fitCenter"
-        android:src="@drawable/folder" />
+        android:src="@drawable/folder"
+        android:layout_above="@+id/textView"
+        android:layout_alignStart="@+id/imageButton8" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageButton3"
-        android:layout_below="@+id/imageButton3"
         android:text="Purchase history"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/biela" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageButton5"
-        android:layout_below="@+id/imageButton5"
-        android:layout_marginLeft="18dp"
-        android:text="Set user info"
-        android:textColor="@color/biela" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_alignRight="@+id/textView3"
-        android:text="Rate &amp; review"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/biela"
-        android:textColorHint="@color/biela" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_below="@+id/imageButton4"
-        android:layout_marginRight="15dp"
-        android:text="Logout"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/biela" />
+        android:textColor="@color/Siva"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignStart="@+id/imageButton3" />
 
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="68dp"
         android:layout_marginRight="32dp"
         android:adjustViewBounds="true"
-        android:background="@color/cierna"
+        android:background="@color/biela"
         android:onClick="settings"
         android:scaleType="fitCenter"
-        android:src="@drawable/logout" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/textView2"
-        android:background="@color/cierna"
-        android:onClick="user_setup"
-        android:scaleType="fitCenter"
-        android:src="@drawable/user" />
+        android:src="@drawable/logout"
+        android:layout_below="@+id/textView2"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="37dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/imageButton6"
-        android:text="Benefit stars"
+        android:text="Rate &amp; review"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/biela" />
+        android:textColor="@color/Siva"
+        android:textColorHint="@color/biela"
+        android:layout_marginStart="51dp"
+        android:layout_below="@+id/imageButton4"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageButton6"
-        android:layout_alignTop="@+id/imageButton8"
-        android:background="@color/cierna"
+        android:background="@color/biela"
         android:onClick="rate"
         android:scaleType="fitCenter"
-        android:src="@drawable/text" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageButton2"
-        android:layout_centerVertical="true"
-        android:background="@color/cierna"
-        android:onClick="stars"
-        android:scaleType="fitCenter"
-        android:src="@drawable/star" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        style="@color/cierna"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/imageButton6"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="83dp"
-        android:layout_marginLeft="33dp"
-        android:background="@color/cierna"
-        android:cropToPadding="false"
-        android:onClick="reservation"
-        android:scaleType="fitCenter"
-        android:src="@drawable/tickets" />
+        android:src="@drawable/text"
+        android:layout_alignTop="@+id/imageButton8"
+        android:layout_alignStart="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Main Menu"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="18dp"
+        android:text="Set user info"
         android:textColor="@color/Siva"
-        android:textSize="40sp" />
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/imageButton5"
+        android:layout_alignEnd="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView1"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignLeft="@+id/imageButton2"
-        android:layout_marginLeft="15dp"
-        android:text="Buy tickets"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/biela" />
+        app:srcCompat="@drawable/nfc"
+        android:layout_marginTop="61dp"
+        android:id="@+id/nfcButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="startNFC"
+        android:adjustViewBounds="false" />
+
+    <TextView
+        android:text="Start NFC transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nfcButton"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView10"
+        android:textColor="@drawable/abc_ab_bottom_solid_dark_holo" />
 
 </RelativeLayout>

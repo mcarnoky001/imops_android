@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/biela"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text="Logout"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Siva"
+        android:layout_below="@+id/imageButton8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="32dp"
+        android:adjustViewBounds="true"
+        android:background="@color/biela"
+        android:onClick="settings"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logout"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="129dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        style="@color/cierna"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/biela"
+        android:onClick="history"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/basket" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start purchase"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Siva"
+        android:layout_below="@+id/imageButton3"
+        android:layout_alignEnd="@+id/imageButton3" />
+
+</RelativeLayout>

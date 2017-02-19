@@ -8,6 +8,7 @@
     <color name="modra">#0099ff</color>
     <color name="cervena">#FF0000</color>
     <color name="Green">#00FF00</color>
-    <color name="Siva">#383838 </color>
+    <color name="Siva">#383838</color>
+    <color name="SlaboSiva">#f3d9d9d9</color>
 
 </resources>

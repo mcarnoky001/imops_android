@@ -1,4 +1,4 @@
-package com.capps.smartbus;
+package com.capps.imops;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -19,48 +19,12 @@ public class Home extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		tickets = (ImageButton) findViewById(R.id.imageButton2);
 		history = (ImageButton) findViewById(R.id.imageButton3);
-		star = (ImageButton) findViewById(R.id.imageButton6);
 		review = (ImageButton) findViewById(R.id.imageButton4);
 		settings = (ImageButton) findViewById(R.id.imageButton8);
 		user_setup = (ImageButton) findViewById(R.id.imageButton5);
 
-		tickets.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				SharedPreferences sharedpreferences = getSharedPreferences(
-						"MojeNastavenia", Context.MODE_PRIVATE);
-				Editor editor = sharedpreferences.edit();
-				if (sharedpreferences.getBoolean("nastavene", false)) {
-					Intent launchactivity = new Intent(Home.this,
-							Reservation.class);
-					startActivity(launchactivity);
-				} else {
-					error1();
-				}
-
-			}
-		});
-		history.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent launchactivity = new Intent(Home.this, History.class);
-				startActivity(launchactivity);
-
-			}
-		});
-		star.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent launchactivity = new Intent(Home.this, Star.class);
-				startActivity(launchactivity);
-
-			}
-		});
 		review.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -94,6 +58,14 @@ public class Home extends Activity {
 				"You cannot enter because you have not filled out your PERSONAL INFORMATION",
 				Toast.LENGTH_SHORT).show();
 
+	}
+
+	public void startNFC(){
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
+		Intent launchactivity = new Intent(Home.this, Nfc.class);
+		launchactivity.putExtra("UserData", json);
+		startActivity(launchactivity);
 	}
 
 	public void btnRateAppOnClick() {

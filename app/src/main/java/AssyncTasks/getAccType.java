@@ -21,7 +21,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.capps.smartbus.MainActivity;
+import com.capps.imops.MainActivity;
 
 public class getAccType extends AsyncTask<String, Integer, Boolean> {
 
@@ -51,7 +51,7 @@ public class getAccType extends AsyncTask<String, Integer, Boolean> {
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
-					"http://147.175.145.190/GetAccType.php");
+					"http://127.0.0.1:8080/php/test.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();

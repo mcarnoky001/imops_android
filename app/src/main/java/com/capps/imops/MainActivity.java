@@ -1,6 +1,7 @@
-package com.capps.smartbus;
+package com.capps.imops;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +23,9 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends Activity {
 
@@ -46,7 +51,6 @@ public class MainActivity extends Activity {
 		email = (EditText) findViewById(R.id.editText1);
 		email_b = (Button) findViewById(R.id.button3);
 		Button login = (Button) findViewById(R.id.button1);
-		Button register = (Button) findViewById(R.id.button2);
 		edit_name.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
@@ -78,29 +82,30 @@ public class MainActivity extends Activity {
 				verify();
 			}
 		});
-		register.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				meno = edit_name.getText().toString();
-				heslo = edit_pass.getText().toString();
-
-				Intent launchactivity = new Intent(MainActivity.this,
-						Register.class);
-				startActivity(launchactivity);
-			}
-		});
 	}
 
 	public void verify() {
 		Get obj = new Get(this);
 		try {
-			if (obj.execute(meno, heslo).get()) {
-				new getAccType(this, this).execute(meno);
+			JSONObject result = obj.execute(meno, heslo).get();
+			if (result !=null) {
+				if(result.getString("accountType").equals("employer")){
+					Intent launchactivity = new Intent(MainActivity.this, Home.class);
+					launchactivity.putExtra("UserData", result.toString());
+					edit_pass.setText("");
+					startActivity(launchactivity);
+				}
+				else{
+					Intent launchactivity = new Intent(MainActivity.this, Home_cashier.class);
+					launchactivity.putExtra("UserData", result.toString());
+					edit_pass.setText("");
+					startActivity(launchactivity);
+				}
 			}
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}
@@ -166,7 +171,7 @@ public class MainActivity extends Activity {
 			startActivity(launchactivity);
 		} else if (typ == 2) {
 			Intent launchactivity = new Intent(MainActivity.this,
-					Home_driver.class);
+					Home_cashier.class);
 			edit_pass.setText("");
 			startActivity(launchactivity);
 

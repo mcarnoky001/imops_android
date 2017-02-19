@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SmartBus</string>
+    <string name="app_name">iMops</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_register">Register</string>
     <string name="verify">Verify</string>

@@ -20,15 +20,14 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-public class Get extends AsyncTask<String, Integer, Boolean> {
+public class Get extends AsyncTask<String, Integer, JSONObject> {
 
 	String name;
 	String pwd;
 	InputStream is = null;
 	String result = null;
 	String line = null;
-	String heslo;
-	private boolean back = false;
+	private JSONObject back;
 
 	private Context mContext;
 
@@ -40,12 +39,12 @@ public class Get extends AsyncTask<String, Integer, Boolean> {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
 		nameValuePairs.add(new BasicNameValuePair("name", name));
-		nameValuePairs.add(new BasicNameValuePair("heslo", pwd));
+		nameValuePairs.add(new BasicNameValuePair("pass", pwd));
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
-					"http://147.175.145.190/select.php");
+					"http://192.168.100.4:8080/php/login.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -71,20 +70,19 @@ public class Get extends AsyncTask<String, Integer, Boolean> {
 		}
 		Log.d("JSON Parser", result);
 		try {
-			JSONObject json_data = new JSONObject(result);
-			heslo = (json_data.getString("pass"));
-			if (heslo.equals("valid")) {
-				back = true;
-			} else {
-				back = false;
-			}
+            if(!result.equals("false"+"\n")) {
+                back = new JSONObject(result);
+            }
+            else{
+                back = null;
+            }
 		} catch (Exception e) {
 			Log.e("Fail 3", e.toString());
 		}
 
 	}
 
-	protected Boolean doInBackground(String... params) {
+	protected JSONObject doInBackground(String... params) {
 		name = params[0];
 		pwd = params[1];
 		select();
