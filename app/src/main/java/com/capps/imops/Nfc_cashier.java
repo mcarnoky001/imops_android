@@ -1,11 +1,13 @@
 package com.capps.imops;
 
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,9 +67,11 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
             Boolean result = obj.execute(json).get();
             if (result == true) {
                 Log.i("Result of verify","true");
+                showToast("Purchase successful");
             }
             else {
                 Log.i("Result of verify", "false");
+                showToast("Purchase failed");
             }
         } catch (InterruptedException | ExecutionException e) {
             // TODO Auto-generated catch block
@@ -84,6 +88,13 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
             }
         });
         verify(account);
+    }
+    private void showToast(String text){
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
 }
