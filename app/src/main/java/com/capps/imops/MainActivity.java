@@ -27,7 +27,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity  {
 
 	String heslo;
 	String meno;

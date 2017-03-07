@@ -33,5 +33,8 @@
     <string name="title_activity_vyber_mesta_driver">VyberMestaDriver</string>
     <string name="title_activity_sedadla64_driver">Sedadla64_driver</string>
     <string name="title_activity_uvod">Uvod</string>
+    <string name="service_name">CardEmulation</string>
+    <string name="title_activity_nfc_cashier">Nfc_cashier</string>
+    <string name="card_title">Sample Loyalty Card</string>
 
 </resources>

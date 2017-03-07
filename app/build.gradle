@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.1"
 
     defaultConfig {
-        applicationId "com.capps.smartbus"
+        applicationId "com.capps.imops"
         minSdkVersion 19
         targetSdkVersion 19
     }

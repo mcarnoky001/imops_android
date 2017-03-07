@@ -60,7 +60,7 @@ public class Home extends Activity {
 
 	}
 
-	public void startNFC(){
+	public void startNFC(View view){
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
 		Intent launchactivity = new Intent(Home.this, Nfc.class);

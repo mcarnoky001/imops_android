@@ -25,13 +25,13 @@
         android:layout_marginRight="32dp"
         android:adjustViewBounds="true"
         android:background="@color/biela"
-        android:onClick="settings"
         android:scaleType="fitCenter"
         android:src="@drawable/logout"
         android:layout_marginTop="67dp"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="129dp" />
+        android:layout_marginStart="129dp"
+        android:onClick="logout" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -39,12 +39,12 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@color/biela"
-        android:onClick="history"
         android:scaleType="fitCenter"
         android:layout_marginTop="79dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/basket" />
+        android:src="@drawable/basket"
+        android:onClick="startNFC" />
 
     <TextView
         android:id="@+id/textView2"

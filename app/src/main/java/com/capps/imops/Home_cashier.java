@@ -14,4 +14,8 @@ public class Home_cashier extends Activity {
 		setContentView(R.layout.activity_home_cashier);
 
 	}
+	public void startNFC(View view){
+		Intent launchactivity = new Intent(Home_cashier.this, Nfc_cashier.class);
+		startActivity(launchactivity);
+	}
 }
