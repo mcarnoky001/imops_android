@@ -7,11 +7,21 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class Home_cashier extends Activity {
-
+	ImageButton exit;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_cashier);
+		exit = (ImageButton) findViewById(R.id.imageButton8);
+
+		exit.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+
+			}
+		});
 
 	}
 	public void startNFC(View view){

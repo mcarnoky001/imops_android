@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Home extends Activity {
-	ImageButton tickets, history, star, review, user_setup, settings;
+	ImageButton tickets, history, star, review, user_setup, exit;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +21,10 @@ public class Home extends Activity {
 		setContentView(R.layout.activity_home);
 		history = (ImageButton) findViewById(R.id.imageButton3);
 		review = (ImageButton) findViewById(R.id.imageButton4);
-		settings = (ImageButton) findViewById(R.id.imageButton8);
+		exit = (ImageButton) findViewById(R.id.imageButton8);
 		user_setup = (ImageButton) findViewById(R.id.imageButton5);
 
-
-		review.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				btnRateAppOnClick();
-			}
-		});
-		settings.setOnClickListener(new View.OnClickListener() {
+		exit.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -67,8 +59,23 @@ public class Home extends Activity {
 		launchactivity.putExtra("UserData", json);
 		startActivity(launchactivity);
 	}
+	public void openUserSettings(View view){
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
+		Intent launchactivity = new Intent(Home.this, UserSetup.class);
+		launchactivity.putExtra("UserData", json);
+		startActivity(launchactivity);
+	}
 
-	public void btnRateAppOnClick() {
+	public void openPurchaseHistory(View view){
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
+		Intent launchactivity = new Intent(Home.this, History.class);
+		launchactivity.putExtra("UserData", json);
+		startActivity(launchactivity);
+	}
+
+	public void btnRateAppOnClick(View view) {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		// Try Google play
 		intent.setData(Uri.parse("market://details?id=com.capps.speedgeekfree"));
