@@ -23,8 +23,7 @@ import com.capps.imops.UserSetup;
 
 public class GetInfo extends AsyncTask<String, Integer, Boolean> {
 
-	String meno;
-	String heslo;
+	String id;
 	InputStream is = null;
 	String result = null;
 	String line = null;
@@ -39,14 +38,14 @@ public class GetInfo extends AsyncTask<String, Integer, Boolean> {
 		this.obj = obj;
 	}
 
-	public void insert() {
+	public void select() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-		nameValuePairs.add(new BasicNameValuePair("meno", meno));
+		nameValuePairs.add(new BasicNameValuePair("id", id));
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost("http://147.175.145.190/GetInfo.php");
+			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/getByID.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -86,8 +85,8 @@ public class GetInfo extends AsyncTask<String, Integer, Boolean> {
 	}
 
 	protected Boolean doInBackground(String... params) {
-		meno = params[0];
-		insert();
+		id = params[0];
+		select();
 		return flag;
 	}
 

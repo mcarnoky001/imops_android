@@ -7,6 +7,7 @@ import AssyncTasks.UpdateAll;
 import AssyncTasks.UpdateOnlyUserInfo;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -15,11 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class UserSetup extends Activity {
 	String menoo, priezv, schranka, addresa;
 	EditText pass1, pass2, name, last, addr, email;
 	Button button1;
-	String meno;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,7 @@ public class UserSetup extends Activity {
 		SharedPreferences sharedpreferences = getSharedPreferences(
 				"MojeNastavenia", Context.MODE_PRIVATE);
 		Editor editor = sharedpreferences.edit();
-		meno = sharedpreferences.getString("meno", null);
+
 		pass1 = (EditText) findViewById(R.id.editText1);
 		pass2 = (EditText) findViewById(R.id.editText2);
 		name = (EditText) findViewById(R.id.editText3);
@@ -36,9 +39,22 @@ public class UserSetup extends Activity {
 		addr = (EditText) findViewById(R.id.editText5);
 		email = (EditText) findViewById(R.id.textView22);
 		button1 = (Button) findViewById(R.id.button1);
-
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
+		JSONObject obj = null;
 		try {
-			if (new GetInfo(this, this).execute(meno).get()) {
+			obj = new JSONObject(json);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		String id = null;
+		try {
+			id = obj.getString("_id");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		try {
+			if (new GetInfo(this, this).execute(id).get()) {
 			}
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
