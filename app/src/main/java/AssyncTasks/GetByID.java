@@ -20,10 +20,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-public class Get extends AsyncTask<String, Integer, JSONObject> {
+public class GetByID extends AsyncTask<String, Integer, JSONObject> {
 
-    String name;
-    String pwd;
+    String id;
     InputStream is = null;
     String result = null;
     String line = null;
@@ -31,20 +30,19 @@ public class Get extends AsyncTask<String, Integer, JSONObject> {
 
     private Context mContext;
 
-    public Get(Context context) {
+    public GetByID(Context context) {
         mContext = context;
     }
 
     public void select() {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("name", name));
-        nameValuePairs.add(new BasicNameValuePair("pass", pwd));
+        nameValuePairs.add(new BasicNameValuePair("id", id));
 
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(
-                    "http://192.168.100.4:8080/php/login.php");
+                    "http://192.168.100.4:8080/php/getByID.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
@@ -83,8 +81,7 @@ public class Get extends AsyncTask<String, Integer, JSONObject> {
     }
 
     protected JSONObject doInBackground(String... params) {
-        name = params[0];
-        pwd = params[1];
+        id = params[0];
         select();
         return back;
     }
