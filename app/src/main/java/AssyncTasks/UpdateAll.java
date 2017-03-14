@@ -46,7 +46,7 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost("http://147.175.145.190/UpdateAll.php");
+			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/updateUserInfo.phpp");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();

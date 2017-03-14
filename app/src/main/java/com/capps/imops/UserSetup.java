@@ -128,6 +128,7 @@ public class UserSetup extends Activity {
 	}
 
 	private void update2() {
+		//
 		new UpdateAll(this).execute(meno, name.getText().toString(), last
 				.getText().toString(), addr.getText().toString(), email
 				.getText().toString(), pass1.getText().toString());

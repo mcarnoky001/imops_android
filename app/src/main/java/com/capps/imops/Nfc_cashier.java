@@ -61,7 +61,21 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
     }
     private void verify(String ID){
         VerifyPurchase obj = new VerifyPurchase(this);
-        String json = "{\"customerID\":\""+ID+"\",\"purchaseID\":\"12312\",\"cost\":\"25\",\"date\":\""+new Date().toString()+"\",\"place\":\"Tesco BA\",\"list\":[{\"name\":\"chicken breasts\",\"price\":\"12.2\",\"category\":\"meat\"},{\"name\":\"Marlboro\",\"price\":\"10.2\",\"category\":\"Tabacoo\"},{\"name\":\"Vodka\",\"price\":\"2.6\",\"category\":\"Alcohol\"}]}";
+        Intent intent = getIntent();
+        String json1 = intent.getStringExtra("UserData");
+        JSONObject obj1 = null;
+        try {
+            obj1 = new JSONObject(json1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String id = null;
+        try {
+            id = obj1.getString("_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String json = "{\"customerID\":\""+ID+"\",\"vendorID\":\""+id+"\",\"purchaseID\":\"12312\",\"cost\":\"25\",\"date\":\""+new Date().toString()+"\",\"place\":\"Tesco BA\",\"list\":[{\"name\":\"chicken breasts\",\"price\":\"12.2\",\"category\":\"meat\"},{\"name\":\"Marlboro\",\"price\":\"10.2\",\"category\":\"Tabacoo\"},{\"name\":\"Vodka\",\"price\":\"2.6\",\"category\":\"Alcohol\"}]}";
         Log.i("jsonResult",json);
         try {
             Boolean result = obj.execute(json).get();

@@ -25,7 +25,10 @@ public class Home_cashier extends Activity {
 
 	}
 	public void startNFC(View view){
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
 		Intent launchactivity = new Intent(Home_cashier.this, Nfc_cashier.class);
+		launchactivity.putExtra("UserData", json);
 		startActivity(launchactivity);
 	}
 }
