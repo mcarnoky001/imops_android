@@ -10,6 +10,7 @@ import AssyncTasks.ForgotPass;
 import AssyncTasks.Get;
 import AssyncTasks.getAccType;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -95,11 +96,18 @@ public class MainActivity extends Activity  {
 					edit_pass.setText("");
 					startActivity(launchactivity);
 				}
-				else{
+				else if(result.getString("accountType").equals("cashier")){
 					Intent launchactivity = new Intent(MainActivity.this, Home_cashier.class);
 					launchactivity.putExtra("UserData", result.toString());
 					edit_pass.setText("");
 					startActivity(launchactivity);
+				}
+				else{
+					Context context = getApplicationContext();
+					int duration = Toast.LENGTH_SHORT;
+
+					Toast toast = Toast.makeText(context, "not supported account type", duration);
+					toast.show();
 				}
 			}
 		} catch (InterruptedException | ExecutionException e) {

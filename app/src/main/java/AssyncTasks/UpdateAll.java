@@ -20,7 +20,7 @@ import android.util.Log;
 
 public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 
-	String name, meno, priezvisko, adresa, email, pass;
+	String name, meno, priezvisko, adresa, email, pass,id;
 	String pwd;
 	InputStream is = null;
 	String result = null;
@@ -37,16 +37,14 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 	public void select() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-		nameValuePairs.add(new BasicNameValuePair("name", name));
-		nameValuePairs.add(new BasicNameValuePair("meno", meno));
-		nameValuePairs.add(new BasicNameValuePair("priezvisko", priezvisko));
-		nameValuePairs.add(new BasicNameValuePair("adresa", adresa));
-		nameValuePairs.add(new BasicNameValuePair("email", email));
-		nameValuePairs.add(new BasicNameValuePair("pass", pass));
+		nameValuePairs.add(new BasicNameValuePair("id", id));
+		nameValuePairs.add(new BasicNameValuePair("meno", name));
+		nameValuePairs.add(new BasicNameValuePair("surname", priezvisko));
+		nameValuePairs.add(new BasicNameValuePair("password", pass));
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/updateUserInfo.phpp");
+			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/UpdateAll.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -69,16 +67,24 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 		} catch (Exception e) {
 			Log.e("Fail 2", e.toString());
 		}
+		try {
+			if(!result.equals("false"+"\n")) {
+				back = true;
+			}
+			else{
+				back = false;
+			}
+		} catch (Exception e) {
+			Log.e("Fail 3", e.toString());
+		}
 
 	}
 
 	protected Boolean doInBackground(String... params) {
-		name = params[0];
+		id = params[0];
 		meno = params[1];
 		priezvisko = params[2];
-		adresa = params[3];
-		email = params[4];
-		pass = params[5];
+		pass = params[3];
 		select();
 		return back;
 	}

@@ -83,13 +83,15 @@ public class History extends Activity {
 	public void setList(JSONArray result) {
 		spoje = result;
 		for (int i = 0; i < spoje.length(); i++) {
-			Object obj = null;
+			JSONObject obj = null;
+			obj = spoje.optJSONObject(i);
+			String text = null;
 			try {
-				obj = spoje.get(i);
+				text = " Date:" + obj.get("datum").toString() + " Store:"
+                        + obj.get("store").toString()+" Price:"  +obj.get("price").toString() + "€";
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			String text = obj.toString();
 			zoznam.add(text);
 		}
 		adapter();

@@ -2,6 +2,7 @@ package com.capps.imops;
 
 import java.util.concurrent.ExecutionException;
 
+import AssyncTasks.GetByID;
 import AssyncTasks.GetInfo;
 import AssyncTasks.UpdateAll;
 import AssyncTasks.UpdateOnlyUserInfo;
@@ -11,17 +12,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserSetup extends Activity {
-	String menoo, priezv, schranka, addresa;
-	EditText pass1, pass2, name, last, addr, email;
+	String menoo, priezv, schranka, addresa,id;
+	EditText pass1, pass2, name, last;
 	Button button1;
 
 	@Override
@@ -36,8 +39,6 @@ public class UserSetup extends Activity {
 		pass2 = (EditText) findViewById(R.id.editText2);
 		name = (EditText) findViewById(R.id.editText3);
 		last = (EditText) findViewById(R.id.editText4);
-		addr = (EditText) findViewById(R.id.editText5);
-		email = (EditText) findViewById(R.id.textView22);
 		button1 = (Button) findViewById(R.id.button1);
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
@@ -47,17 +48,24 @@ public class UserSetup extends Activity {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		String id = null;
 		try {
 			id = obj.getString("_id");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		try {
-			if (new GetInfo(this, this).execute(id).get()) {
+			JSONObject result = new GetByID(this).execute(id).get();
+			if (result !=null) {
+				String userName = result.getString("name");
+				String userSurName = result.getString("surname");
+				name.setText(userName);
+				last.setText(userSurName);
 			}
+
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		button1.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +75,7 @@ public class UserSetup extends Activity {
 				// TODO Auto-generated method stub
 				if (!name.getText().toString().matches("")
 						&& !last.getText().toString().matches("")
-						&& !addr.getText().toString().matches("")
-						&& !email.getText().toString().matches("")) {
+						) {
 					if (pass1.getText().toString().matches("")
 							&& pass2.getText().toString().matches("")) {
 						update1();
@@ -117,26 +124,14 @@ public class UserSetup extends Activity {
 	}
 
 	private void update1() {
-		new UpdateOnlyUserInfo(this).execute(meno, name.getText().toString(),
-				last.getText().toString(), addr.getText().toString(), email
-						.getText().toString());
-		SharedPreferences prefs = getSharedPreferences("MojeNastavenia",
-				MODE_PRIVATE);
-		Editor editor = prefs.edit();
-		editor.putBoolean("nastavene", true);
-		editor.commit();
+		new UpdateOnlyUserInfo(this).execute(id,name.getText().toString(),
+				last.getText().toString());
 	}
 
 	private void update2() {
 		//
-		new UpdateAll(this).execute(meno, name.getText().toString(), last
-				.getText().toString(), addr.getText().toString(), email
+		new UpdateAll(this).execute(id,name.getText().toString(), last
 				.getText().toString(), pass1.getText().toString());
-		SharedPreferences prefs = getSharedPreferences("MojeNastavenia",
-				MODE_PRIVATE);
-		Editor editor = prefs.edit();
-		editor.putBoolean("nastavene", true);
-		editor.commit();
 
 	}
 
@@ -167,8 +162,6 @@ public class UserSetup extends Activity {
 	private void nastavenie() {
 		name.setText(menoo);
 		last.setText(priezv);
-		addr.setText(addresa);
-		email.setText(schranka);
 
 	}
 }

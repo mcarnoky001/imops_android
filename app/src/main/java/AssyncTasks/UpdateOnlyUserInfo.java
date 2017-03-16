@@ -13,6 +13,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -20,7 +21,7 @@ import android.util.Log;
 
 public class UpdateOnlyUserInfo extends AsyncTask<String, Integer, Boolean> {
 
-	String name, meno, priezvisko, adresa, email;
+	String name, meno, priezvisko, adresa, email, id;
 	String pwd;
 	InputStream is = null;
 	String result = null;
@@ -36,16 +37,13 @@ public class UpdateOnlyUserInfo extends AsyncTask<String, Integer, Boolean> {
 
 	public void select() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
-		nameValuePairs.add(new BasicNameValuePair("name", name));
-		nameValuePairs.add(new BasicNameValuePair("meno", meno));
-		nameValuePairs.add(new BasicNameValuePair("priezvisko", priezvisko));
-		nameValuePairs.add(new BasicNameValuePair("adresa", adresa));
-		nameValuePairs.add(new BasicNameValuePair("email", email));
+		nameValuePairs.add(new BasicNameValuePair("id", id));
+		nameValuePairs.add(new BasicNameValuePair("meno", name));
+		nameValuePairs.add(new BasicNameValuePair("surname", priezvisko));
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost("http://147.175.145.190/UpdateInfo.php");
+			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/UpdateName.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -68,15 +66,23 @@ public class UpdateOnlyUserInfo extends AsyncTask<String, Integer, Boolean> {
 		} catch (Exception e) {
 			Log.e("Fail 2", e.toString());
 		}
+		try {
+			if(!result.equals("false"+"\n")) {
+				back = true;
+			}
+			else{
+				back = false;
+			}
+		} catch (Exception e) {
+			Log.e("Fail 3", e.toString());
+		}
 
 	}
 
 	protected Boolean doInBackground(String... params) {
-		name = params[0];
+		id = params[0];
 		meno = params[1];
 		priezvisko = params[2];
-		adresa = params[3];
-		email = params[4];
 		select();
 		return back;
 	}
