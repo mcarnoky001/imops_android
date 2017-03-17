@@ -51,6 +51,11 @@
             android:label="@string/title_activity_settings"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".History"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_history"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".Home_cashier"
             android:configChanges="orientation"
             android:label="@string/title_activity_home_driver"

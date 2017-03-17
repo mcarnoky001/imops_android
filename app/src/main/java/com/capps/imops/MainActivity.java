@@ -90,7 +90,7 @@ public class MainActivity extends Activity  {
 		try {
 			JSONObject result = obj.execute(meno, heslo).get();
 			if (result !=null) {
-				if(result.getString("accountType").equals("employer")){
+				if(result.getString("accountType").equals("employee")){
 					Intent launchactivity = new Intent(MainActivity.this, Home.class);
 					launchactivity.putExtra("UserData", result.toString());
 					edit_pass.setText("");

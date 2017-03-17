@@ -31,9 +31,6 @@ public class UserSetup extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_setup);
-		SharedPreferences sharedpreferences = getSharedPreferences(
-				"MojeNastavenia", Context.MODE_PRIVATE);
-		Editor editor = sharedpreferences.edit();
 
 		pass1 = (EditText) findViewById(R.id.editText1);
 		pass2 = (EditText) findViewById(R.id.editText2);
