@@ -81,11 +81,11 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
             Boolean result = obj.execute(json).get();
             if (result == true) {
                 Log.i("Result of verify","true");
-                showToast("Purchase successful");
+                //showToast("Purchase successful");
             }
             else {
                 Log.i("Result of verify", "false");
-                showToast("Purchase failed");
+                //showToast("Purchase failed");
             }
         } catch (InterruptedException | ExecutionException e) {
             // TODO Auto-generated catch block

@@ -1,21 +1,19 @@
 package com.capps.imops;
 
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 import AssyncTasks.EmailVerify;
 import AssyncTasks.ForgotPass;
 import AssyncTasks.Get;
-import AssyncTasks.getAccType;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;

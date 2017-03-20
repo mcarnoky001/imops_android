@@ -1,6 +1,7 @@
 package AssyncTasks;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -41,10 +42,18 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 		nameValuePairs.add(new BasicNameValuePair("meno", name));
 		nameValuePairs.add(new BasicNameValuePair("surname", priezvisko));
 		nameValuePairs.add(new BasicNameValuePair("password", pass));
+		String ip = null;
+		String port = null;
+		try {
+			ip = Util.Util.getProperty("ip",mContext);
+			port = Util.Util.getProperty("port",mContext);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost("http://192.168.100.4:8080/php/UpdateAll.php");
+			HttpPost httppost = new HttpPost("http://"+ip+":"+port+"/php/UpdateAll.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
