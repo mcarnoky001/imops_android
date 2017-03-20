@@ -32,25 +32,6 @@
             android:layout_centerHorizontal="true"
             tools:text="Attach the device to the terminal" />
 
-        <Button
-            android:text="Yes"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="38dp"
-            android:id="@+id/yesButton"
-            android:layout_width="70dp"
-            android:layout_below="@+id/instructionTextView"
-            android:layout_alignStart="@+id/instructionTextView" />
-
-        <Button
-            android:text="No"
-            android:layout_height="wrap_content"
-            android:id="@+id/noButton"
-            android:layout_width="70dp"
-            android:layout_marginEnd="36dp"
-            android:layout_alignBaseline="@+id/yesButton"
-            android:layout_alignBottom="@+id/yesButton"
-            android:layout_alignEnd="@+id/instructionTextView" />
     </RelativeLayout>
 
 </LinearLayout>

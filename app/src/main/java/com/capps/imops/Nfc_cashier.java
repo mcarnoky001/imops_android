@@ -81,11 +81,11 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
             Boolean result = obj.execute(json).get();
             if (result == true) {
                 Log.i("Result of verify","true");
-                //showToast("Purchase successful");
+                showToast("Purchase successful");
             }
             else {
                 Log.i("Result of verify", "false");
-                //showToast("Purchase failed");
+                showToast("Purchase failed");
             }
         } catch (InterruptedException | ExecutionException e) {
             // TODO Auto-generated catch block
@@ -95,20 +95,19 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
 
     @Override
     public void onAccountReceived(final String account) {
+        verify(account);
+    }
+    private void showToast(final String text){
+        final Context context = getApplicationContext();
+        final int duration = Toast.LENGTH_SHORT;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mAccountField.setText(account);
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
-        verify(account);
-    }
-    private void showToast(String text){
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
     }
 
 }

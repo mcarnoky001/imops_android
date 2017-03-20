@@ -39,13 +39,8 @@ public class UserSetup extends Activity {
 		button1 = (Button) findViewById(R.id.button1);
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
-		JSONObject obj = null;
 		try {
-			obj = new JSONObject(json);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		try {
+			JSONObject obj = new JSONObject(json);
 			id = obj.getString("_id");
 		} catch (JSONException e) {
 			e.printStackTrace();

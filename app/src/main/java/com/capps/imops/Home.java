@@ -32,15 +32,6 @@ public class Home extends Activity {
 
 			}
 		});
-		user_setup.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent launchactivity = new Intent(Home.this, UserSetup.class);
-				startActivity(launchactivity);
-
-			}
-		});
 	}
 
 	protected void error1() {

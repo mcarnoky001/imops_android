@@ -48,10 +48,6 @@ public class History extends Activity {
 		zoznam = new ArrayList<String>();
 		mesta = new ArrayList<Mesto>();
 		lv = (ListView) findViewById(R.id.listView1);
-		View footerView = ((LayoutInflater) this
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
-				R.layout.footer_layout, null, false);
-		lv.addFooterView(footerView);
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
 		Log.i("UserData:",json.toString());
@@ -87,8 +83,8 @@ public class History extends Activity {
 			obj = spoje.optJSONObject(i);
 			String text = null;
 			try {
-				text = " Date:" + obj.get("datum").toString() + " Store:"
-                        + obj.get("store").toString()+" Price:"  +obj.get("price").toString() + "€";
+				text = " Date:" + obj.getString("date") + " Store:"
+                        + obj.getString("store")+" Price:"  +obj.get("price") + "€";
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

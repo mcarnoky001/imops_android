@@ -50,7 +50,7 @@ public class GetByID extends AsyncTask<String, Integer, JSONObject> {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(
-                    "http://"+ip+":"+port+"/php/getByID.php");
+                    "http://"+ip+":"+port+"/php/GetByID.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();

@@ -52,7 +52,7 @@ public class CustomListAdapterHistory extends ArrayAdapter {
 
         text.setTextColor(Color.WHITE);
         text.setText(items.get(position));
-        int color = Color.argb(200, 0, 204, 0);
+        int color = Color.argb(200, 0, 0, 0);
         text.setBackgroundColor(color);
 
 

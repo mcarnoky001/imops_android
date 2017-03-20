@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cierna"
+    android:background="@color/biela"
     tools:context="${relativePackage}.${activityClass}" >
 
     <EditText
@@ -17,7 +17,9 @@
         android:ems="10"
         android:hint="Password confirm"
         android:inputType="textPassword"
-        android:textColor="@color/biela" />
+        android:textColor="@color/biela"
+        android:password="true"
+        android:gravity="center_vertical|center_horizontal" />
 
     <EditText
         android:id="@+id/editText3"
@@ -60,17 +62,19 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/biela" />
+        android:textColor="@color/biela"
+        android:password="true"
+        android:gravity="center_vertical|center_horizontal" />
 
     <Button
         android:id="@+id/button1"
-        style="@style/AppTheme"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:textColor="@color/Green"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/editText4"
+        android:layout_marginBottom="106dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
