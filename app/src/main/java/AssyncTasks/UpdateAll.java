@@ -21,12 +21,10 @@ import android.util.Log;
 
 public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 
-	String name, meno, priezvisko, adresa, email, pass,id;
-	String pwd;
+	String  pass,id;
 	InputStream is = null;
 	String result = null;
 	String line = null;
-	String heslo;
 	private boolean back = false;
 
 	private Context mContext;
@@ -39,8 +37,6 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
 		nameValuePairs.add(new BasicNameValuePair("id", id));
-		nameValuePairs.add(new BasicNameValuePair("meno", name));
-		nameValuePairs.add(new BasicNameValuePair("surname", priezvisko));
 		nameValuePairs.add(new BasicNameValuePair("password", pass));
 		String ip = null;
 		String port = null;
@@ -91,9 +87,7 @@ public class UpdateAll extends AsyncTask<String, Integer, Boolean> {
 
 	protected Boolean doInBackground(String... params) {
 		id = params[0];
-		meno = params[1];
-		priezvisko = params[2];
-		pass = params[3];
+		pass = params[1];
 		select();
 		return back;
 	}

@@ -39,7 +39,7 @@ public class UpdateOnlyUserInfo extends AsyncTask<String, Integer, Boolean> {
 	public void select() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		nameValuePairs.add(new BasicNameValuePair("id", id));
-		nameValuePairs.add(new BasicNameValuePair("meno", name));
+		nameValuePairs.add(new BasicNameValuePair("meno", meno));
 		nameValuePairs.add(new BasicNameValuePair("surname", priezvisko));
 		String ip = null;
 		String port = null;

@@ -82,6 +82,7 @@ public class UserSetup extends Activity {
 							&& !pass2.getText().toString().matches("")) {
 						if (pass1.getText().toString()
 								.equals(pass2.getText().toString())) {
+							update1();
 							update2();
 						} else {
 							chyba2();
@@ -122,8 +123,7 @@ public class UserSetup extends Activity {
 
 	private void update2() {
 		//
-		new UpdateAll(this).execute(id,name.getText().toString(), last
-				.getText().toString(), pass1.getText().toString());
+		new UpdateAll(this).execute(id, pass1.getText().toString());
 
 	}
 
