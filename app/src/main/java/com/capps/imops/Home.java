@@ -65,6 +65,13 @@ public class Home extends Activity {
 		launchactivity.putExtra("UserData", json);
 		startActivity(launchactivity);
 	}
+	public void sendCredit(View view){
+		Intent intent = getIntent();
+		String json = intent.getStringExtra("UserData");
+		Intent launchactivity = new Intent(Home.this, SendCredit.class);
+		launchactivity.putExtra("UserData", json);
+		startActivity(launchactivity);
+	}
 
 	public void btnRateAppOnClick(View view) {
 		Intent intent = new Intent(Intent.ACTION_VIEW);

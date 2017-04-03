@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 public class UserSetup extends Activity {
 	String menoo, priezv, schranka, addresa,id;
 	EditText pass1, pass2, name, last;
+	TextView userID;
 	Button button1;
 
 	@Override
@@ -36,12 +38,14 @@ public class UserSetup extends Activity {
 		pass2 = (EditText) findViewById(R.id.editText2);
 		name = (EditText) findViewById(R.id.editText3);
 		last = (EditText) findViewById(R.id.editText4);
+		userID = (TextView) findViewById(R.id.textView11);
 		button1 = (Button) findViewById(R.id.button1);
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
 		try {
 			JSONObject obj = new JSONObject(json);
 			id = obj.getString("_id");
+			userID.setText(id);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

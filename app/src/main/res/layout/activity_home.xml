@@ -6,6 +6,18 @@
     android:background="@color/biela"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        style="@color/cierna"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/biela"
+        android:scaleType="fitCenter"
+        android:src="@drawable/folder"
+        android:onClick="openPurchaseHistory"
+        android:layout_above="@+id/textView3"
+        android:layout_alignStart="@+id/imageButton8" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -29,29 +41,6 @@
         android:src="@drawable/user"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/imageButton4" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        style="@color/cierna"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@color/biela"
-        android:scaleType="fitCenter"
-        android:src="@drawable/folder"
-        android:layout_above="@+id/textView"
-        android:layout_alignStart="@+id/imageButton8"
-        android:onClick="openPurchaseHistory" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Purchase history"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/Siva"
-        android:layout_alignBaseline="@+id/textView"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignStart="@+id/imageButton3" />
 
     <ImageButton
         android:id="@+id/imageButton8"
@@ -91,18 +80,6 @@
         android:layout_alignStart="@+id/textView5"
         android:onClick="btnRateAppOnClick" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        style="@color/cierna"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@color/biela"
-        android:scaleType="fitCenter"
-        android:src="@drawable/folder"
-        android:layout_above="@+id/textView"
-        android:layout_alignStart="@+id/imageButton8"
-        android:onClick="openPurchaseHistory" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -114,24 +91,57 @@
         android:layout_below="@+id/imageButton5"
         android:layout_alignEnd="@+id/textView5" />
 
-    <ImageButton
+    <TextView
+        android:text="Purchases history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
+        android:id="@+id/textView3"
+        android:textColor="@color/Siva"
+        android:layout_alignBaseline="@+id/textView10"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignStart="@+id/imageButton3" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/nfcButton"
         android:src="@drawable/nfc"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:onClick="startNFC"
-        android:adjustViewBounds="false" />
+        android:adjustViewBounds="false"
+        android:layout_above="@+id/textView10"
+        android:layout_alignEnd="@+id/imageButton5" />
 
     <TextView
         android:text="Start NFC transaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nfcButton"
-        android:layout_centerHorizontal="true"
         android:id="@+id/textView10"
-        android:textColor="@color/Siva"/>
+        android:textColor="@color/Siva"
+        android:layout_marginBottom="23dp"
+        android:layout_above="@+id/imageButton5"
+        android:layout_toStartOf="@+id/textView3"
+        android:layout_marginEnd="31dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Credit"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Siva"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignEnd="@+id/textView6" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        style="@color/cierna"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/biela"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arrow"
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/imageButton" />
 
 </RelativeLayout>
