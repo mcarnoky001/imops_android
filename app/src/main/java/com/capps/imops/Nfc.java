@@ -27,7 +27,6 @@ public class Nfc extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfc);
-        instructionText = (TextView) findViewById(R.id.instructionTextView);
         Intent intent = getIntent();
         String json = intent.getStringExtra("UserData");
         Log.i("UserData:",json.toString());

@@ -21,7 +21,6 @@
             android:src="@drawable/nfc" />
 
         <TextView
-            android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="47dp"
@@ -30,7 +29,7 @@
             android:textSize="18sp"
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true"
-            tools:text="Attach the device to the terminal" />
+            android:text="Attach this devide to the terminal" />
 
     </RelativeLayout>
 

@@ -66,6 +66,11 @@
             android:label="@string/title_activity_MainActivity"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".SendCredit"
+            android:configChanges="orientation"
+            android:label="Send Credit"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".Nfc"
             android:configChanges="orientation"
             android:label="Nfc"

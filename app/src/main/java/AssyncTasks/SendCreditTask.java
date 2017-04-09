@@ -71,6 +71,7 @@ public class SendCreditTask extends AsyncTask<String, Integer, Boolean> {
             }
             is.close();
             result = sb.toString();
+            Log.i("Result: ",result);
             Log.e("pass 2", "connection success ");
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());

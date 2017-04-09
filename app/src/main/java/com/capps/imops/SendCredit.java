@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
 import AssyncTasks.GetByID;
 import AssyncTasks.SendCreditTask;
 
-public class Home extends Activity {
+public class SendCredit extends Activity {
     EditText recepientID,amount;
     String id;
     protected void onCreate(Bundle savedInstanceState) {

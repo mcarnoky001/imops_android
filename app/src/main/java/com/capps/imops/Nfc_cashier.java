@@ -23,13 +23,11 @@ public class Nfc_cashier extends Activity implements LoyaltyCardReader.AccountCa
     public static int READER_FLAGS =
             NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK;
     public LoyaltyCardReader mLoyaltyCardReader;
-    public TextView mAccountField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfc_cashier);
         mLoyaltyCardReader = new LoyaltyCardReader(this);
-        mAccountField = (TextView) findViewById(R.id.instructionTextView);
         enableReaderMode();
     }
     @Override

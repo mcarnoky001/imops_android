@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="18dp"
-        android:text="Set user info"
+        android:text="User details"
         android:textColor="@color/Siva"
         android:layout_marginTop="17dp"
         android:layout_below="@+id/imageButton5"
@@ -142,6 +142,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/arrow"
         android:layout_below="@+id/textView10"
-        android:layout_alignStart="@+id/imageButton" />
+        android:layout_alignStart="@+id/imageButton"
+        android:onClick="sendCredit" />
 
 </RelativeLayout>

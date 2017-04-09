@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class UserSetup extends Activity {
 	String menoo, priezv, schranka, addresa,id;
 	EditText pass1, pass2, name, last;
-	TextView userID;
+	TextView userID,credits;
 	Button button1;
 
 	@Override
@@ -39,6 +39,7 @@ public class UserSetup extends Activity {
 		name = (EditText) findViewById(R.id.editText3);
 		last = (EditText) findViewById(R.id.editText4);
 		userID = (TextView) findViewById(R.id.textView11);
+		credits= (TextView) findViewById(R.id.textView12);
 		button1 = (Button) findViewById(R.id.button1);
 		Intent intent = getIntent();
 		String json = intent.getStringExtra("UserData");
@@ -54,6 +55,8 @@ public class UserSetup extends Activity {
 			if (result !=null) {
 				String userName = result.getString("name");
 				String userSurName = result.getString("surname");
+				String creditsNo = result.getString("credit");
+				credits.setText(creditsNo);
 				name.setText(userName);
 				last.setText(userSurName);
 			}

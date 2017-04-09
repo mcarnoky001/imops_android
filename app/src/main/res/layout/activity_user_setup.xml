@@ -5,6 +5,16 @@
     android:background="@color/biela"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <TextView
+        android:text="Credits left:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView13"
+        android:textColor="@color/Siva"
+        android:layout_below="@+id/textView11"
+        android:layout_centerHorizontal="true" />
+
     <EditText
         android:id="@+id/editText2"
         android:layout_width="270dp"
@@ -85,10 +95,14 @@
         android:textColor="@color/Siva"
         android:layout_marginTop="13dp"
         android:layout_below="@+id/textView9"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:editable="false"
+        android:focusable="true"
+        android:textIsSelectable="true" />
 
     <TextView
-        android:text="user id:"
+        android:text="Userd ID:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -96,5 +110,15 @@
         android:textColor="@color/Siva"
         android:layout_below="@+id/editText4"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="n/a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textColor="@color/Siva"
+        android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
 
 </RelativeLayout>
