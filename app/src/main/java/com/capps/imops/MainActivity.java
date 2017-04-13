@@ -115,32 +115,29 @@ public class MainActivity extends Activity  {
 			e.printStackTrace();
 		}
 	}
-
-	public void onClick(View v) {
-		email.setVisibility(View.VISIBLE);
-		email_b.setVisibility(View.VISIBLE);
-		email_b.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (ChceckEmailFormat()) {
-					try {
-						if (new EmailVerify(MainActivity.this).execute(
-								email.getText().toString()).get()) {
-							new ForgotPass(MainActivity.this).execute(email
-									.getText().toString());
-						} else {
-							error1();
-						}
-					} catch (InterruptedException | ExecutionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+	public void forgottenPass(View view){
+		if(edit_name.getText().toString().equals("")){
+			Toast toast = Toast.makeText(getApplicationContext(), "fill your username please", Toast.LENGTH_SHORT);
+			toast.show();
+		}
+		else{
+			ForgotPass obj = new ForgotPass(this);
+			try {
+				Boolean result = obj.execute(edit_name.getText().toString()).get();
+				if (result == true) {
+					Toast toast = Toast.makeText(getApplicationContext(), "Email with new password succesfully sent.", Toast.LENGTH_SHORT);
+					toast.show();
 				}
-
+				else{
+					Toast toast = Toast.makeText(getApplicationContext(), "Username not found, cannot restore password.", Toast.LENGTH_SHORT);
+					toast.show();
+				}
 			}
-
-		});
+			catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	protected void error1() {
@@ -148,39 +145,5 @@ public class MainActivity extends Activity  {
 		Toast.makeText(this, "Email not found", Toast.LENGTH_SHORT).show();
 	}
 
-	private boolean ChceckEmailFormat() {
-		String sprava = email.getText().toString();
-		Pattern pattern = Patterns.EMAIL_ADDRESS;
-		if (!pattern.matcher(sprava).matches()) {
-			Toast.makeText(this, "Bad email adress form", Toast.LENGTH_SHORT)
-					.show();
-			email.setText("");
-			return false;
-		}
-		return true;
-	}
 
-	public void PutType(Boolean result) {
-		SharedPreferences prefs = getSharedPreferences("MojeNastavenia",
-				MODE_PRIVATE);
-		Editor editor = prefs.edit();
-		editor.putString("meno", meno);
-		editor.commit();
-		if (result == true) {
-			typ = 1;
-		} else {
-			typ = 2;
-		}
-		if (typ == 1) {
-			Intent launchactivity = new Intent(MainActivity.this, Home.class);
-			edit_pass.setText("");
-			startActivity(launchactivity);
-		} else if (typ == 2) {
-			Intent launchactivity = new Intent(MainActivity.this,
-					Home_cashier.class);
-			edit_pass.setText("");
-			startActivity(launchactivity);
-
-		}
-	}
 }

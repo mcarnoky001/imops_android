@@ -1,6 +1,7 @@
 package AssyncTasks;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -22,13 +23,12 @@ import android.widget.Toast;
 
 public class ForgotPass extends AsyncTask<String, Integer, Boolean> {
 
-	String email;
-	boolean vysledok = false;
+	String name;
+	boolean back = false;
 	InputStream is = null;
 	String result = null;
 	String line = null;
-	String heslo;
-	boolean stav = false;
+
 
 	private Context mContext;
 
@@ -39,11 +39,19 @@ public class ForgotPass extends AsyncTask<String, Integer, Boolean> {
 	public void select() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-		nameValuePairs.add(new BasicNameValuePair("email", email));
+		nameValuePairs.add(new BasicNameValuePair("name", name));
+		String ip = null;
+		String port = null;
+		try {
+			ip = Util.Util.getProperty("ip",mContext);
+			port = Util.Util.getProperty("port",mContext);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(
-					"http://147.175.145.190/forgotpassword.php");
+					"http://"+ip+":"+port+"/php/forgotpassword.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
@@ -69,13 +77,11 @@ public class ForgotPass extends AsyncTask<String, Integer, Boolean> {
 		}
 		Log.d("JSON Parser", result);
 		try {
-			JSONObject json_data = new JSONObject(result);
-			heslo = (json_data.getString("if"));
-			if (heslo.equals("ok")) {
-				vysledok = true;
-				// spustit script
-			} else if (heslo.equals("not ok")) {
-				vysledok = false;
+			if(!result.equals("false"+"\n")) {
+				back = true;
+			}
+			else{
+				back = false;
 			}
 
 		} catch (Exception e) {
@@ -85,9 +91,9 @@ public class ForgotPass extends AsyncTask<String, Integer, Boolean> {
 	}
 
 	protected Boolean doInBackground(String... params) {
-		email = params[0];
+		name = params[0];
 		select();
-		return vysledok;
+		return back;
 	}
 
 	protected void onPostExecute(Boolean result) {
