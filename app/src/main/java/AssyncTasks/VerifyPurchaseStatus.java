@@ -1,10 +1,8 @@
 package AssyncTasks;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,16 +12,16 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
-public class VerifyPurchase extends AsyncTask<String, Integer, Boolean> {
+public class VerifyPurchaseStatus extends AsyncTask<String, Integer, Boolean> {
 
-    String json;
+    String id;
     InputStream is = null;
     String result = null;
     String line = null;
@@ -31,14 +29,14 @@ public class VerifyPurchase extends AsyncTask<String, Integer, Boolean> {
 
     private Context mContext;
 
-    public VerifyPurchase(Context context) {
+    public VerifyPurchaseStatus(Context context) {
         mContext = context;
     }
 
     public void select() {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("json",json));
+        nameValuePairs.add(new BasicNameValuePair("id",id));
         String ip = null;
         String port = null;
         try {
@@ -50,7 +48,7 @@ public class VerifyPurchase extends AsyncTask<String, Integer, Boolean> {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(
-                    "http://"+ip+":"+port+"/php/verifyPurchase.php");
+                    "http://"+ip+":"+port+"/php/verifyPurchaseStatus.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
@@ -89,7 +87,7 @@ public class VerifyPurchase extends AsyncTask<String, Integer, Boolean> {
     }
 
     protected Boolean doInBackground(String... params) {
-        json = params[0];
+        id = params[0];
         select();
         return back;
     }

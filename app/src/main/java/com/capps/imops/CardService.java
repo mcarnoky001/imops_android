@@ -16,11 +16,15 @@
 
 package com.capps.imops;
 
+import android.app.Activity;
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Map;
 
 /**
  * This is a sample APDU Service which demonstrates how to interface with the card emulation support
@@ -50,6 +54,7 @@ public class CardService extends HostApduService {
     // "UNKNOWN" status word sent in response to invalid APDU command (0x0000)
     private static final byte[] UNKNOWN_CMD_SW = HexStringToByteArray("0000");
     private static final byte[] SELECT_APDU = BuildSelectApdu(SAMPLE_LOYALTY_CARD_AID);
+    private static Nfc nfcObject;
 
     /**
      * Called if the connection to the NFC card is lost, in order to let the application know the
@@ -90,6 +95,10 @@ public class CardService extends HostApduService {
             String account = AccountStorage.GetAccount(this);
             byte[] accountBytes = account.getBytes();
             Log.i(TAG, "Sending account number: " + account);
+            if(nfcObject != null){
+                nfcObject.continueAfterTagSent();
+            }
+
             return ConcatArrays(accountBytes, SELECT_OK_SW);
         } else {
             return UNKNOWN_CMD_SW;
@@ -169,5 +178,9 @@ public class CardService extends HostApduService {
             offset += array.length;
         }
         return result;
+    }
+
+    public static void updateIntanceOfNfcClass(Nfc object){
+        nfcObject=object;
     }
 }

@@ -31,6 +31,26 @@
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true" />
 
+        <TextView
+            android:text="Purchase price :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:id="@+id/textView4"
+            android:textColor="@color/Siva"
+            android:layout_below="@+id/instructionTextView"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:id="@+id/textView14"
+            android:textSize="80sp"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
 </LinearLayout>

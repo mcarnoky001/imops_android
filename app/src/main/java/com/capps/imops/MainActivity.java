@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
@@ -108,12 +109,28 @@ public class MainActivity extends Activity  {
 					toast.show();
 				}
 			}
+			else {
+				Log.i("Result of verify", "false");
+				showToast("Cannot login, bad credentials");
+			}
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	private void showToast(final String text){
+		final Context context = getApplicationContext();
+		final int duration = Toast.LENGTH_LONG;
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+		});
+
 	}
 	public void forgottenPass(View view){
 		if(edit_name.getText().toString().equals("")){
